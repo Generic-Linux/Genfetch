@@ -15,9 +15,9 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  runubuntu:
-    # The type of runner that the job will run on
+  # This workflow contains a single job called "genfetch"
+  genfetch:
+    # The type of runner that the job will run on (no arch so ubuntu)
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -25,6 +25,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
+      # Installs python and runs genfetch
       - name: Run a one-line script
         run: sudo apt install python3 -y --quiet && python3 ./genfetch.py
