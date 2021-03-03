@@ -7,21 +7,31 @@ import os
 import getpass
 import sys as inf
 
+
+with open("/etc/os-release") as os_rel:
+	release_info_raw = os_rel.read().strip()
+
+release_info = {}
+
+for info in release_info_raw.split("\n"):
+	release_info.update({info.split("=")[0]:info.split("=")[1]})
+
 ver = "v0.0 ALPHA"
 
 attrib = [
   "=-=-=-=-=-=-=-=-=-=-=-=-",
   getpass.getuser() + "@" + os.uname().nodename,
-  "[31mKernel:[0m " + inf.platform,
-  "[31mVersion:[0m " + ver,
+  "Kernel: " + inf.platform,
+  "Version: " + ver,
+  "OS: " + release_info['NAME'][1:-1],
   "=-=-=-=-=-=-=-=-=-=-=-=-"
 ]
 logo = [
-  "||[31m||||||||[0m ",
+  "|||||||||| ",
   "||         ",
-  "||  [31m|||||| [0m",
-  "||      [31m|| [0m",
-  "||||||||[31m|| [0m"
+  "||  |||||| ",
+  "||      || ",
+  "|||||||||| "
 ]
 for i in range(len(logo)):
   print(logo[i] + attrib[i])
