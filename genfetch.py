@@ -2,6 +2,7 @@
 # Genfetch
 # Neofetch, but generic
 # Created by VideoToaster, under GPLv2+
+# Modified by mugman
 # -------------------------------------
 import os
 import getpass
